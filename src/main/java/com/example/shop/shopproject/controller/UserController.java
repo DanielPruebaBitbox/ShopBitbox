@@ -2,7 +2,7 @@ package com.example.shop.shopproject.controller;
 
 import java.util.List;
 
-import com.example.shop.shopproject.Service.UserService;
+import com.example.shop.shopproject.service.UserService;
 import com.example.shop.shopproject.model.User;
 import com.example.shop.shopproject.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class UserController {
     public HttpStatus deleteUser(@PathVariable(value = "id") Long userId)
             throws ResourceNotFoundException {
         userService.deleteUser(userId);
-        return HttpStatus.FORBIDDEN;
+        return HttpStatus.OK;
     }
 
 }

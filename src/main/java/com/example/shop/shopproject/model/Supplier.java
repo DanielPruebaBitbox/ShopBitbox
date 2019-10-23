@@ -1,6 +1,8 @@
 package com.example.shop.shopproject.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+
 
 @Entity
 @Table(name = "suppliers")
@@ -8,6 +10,7 @@ public class Supplier {
     private long id;
     private String name;
     private String country;
+    private ArrayList<Product> productSet = new ArrayList<>();
 
     public Supplier(){
     }

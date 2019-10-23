@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class Product {
 
     private long id;
+    private long productCode;
     private String name;
     private String description;
     private boolean active;
     private LocalDate creationDate;
     private int price;
     private long creator;
+
     private ArrayList<Supplier> supplier = new ArrayList<Supplier>();
     private ArrayList<PriceReduction> priceReduction = new ArrayList<PriceReduction>();
 
@@ -37,7 +39,12 @@ public class Product {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "product_code", nullable = false)
+    public long getProductCode() { return productCode;}
+    public void setProductCode(long productCode) {this.productCode = productCode;
+    }
+
+    @Column(name = "name", nullable = true)
     public String getName() {
         return name;
     }
@@ -53,40 +60,29 @@ public class Product {
         this.description = description;
     }
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = true)
     public int getPrice(){return price;}
     public void setPrice(int price){this.price = price;}
 
-    @Column(name = "creation_date", nullable = false)
+    @Column(name = "creation_date", nullable = true)
     public LocalDate getCreationDate(){return creationDate;}
     public void setCreationDate(){this.creationDate = LocalDate.now();}
 
-    @Column(name = "product_active", nullable = false)
+    @Column(name = "product_active", nullable = true)
     public boolean isActive() {return active;}
     public void setActive(boolean active) {this.active = active;
     }
 
-    @Column(name = "product_creator", nullable = false)
+    @Column(name = "product_creator", nullable = true)
     public long getCreator() { return creator;    }
     public void setCreator(long creator) { this.creator = creator; }
 
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
+    @Column(name = "creation_date", nullable = true)
+    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate;}
 
-    public ArrayList<Supplier> getSupplier() {
-        return supplier;
-    }
+    public ArrayList<Supplier> getSupplier() { return supplier; }
+    public void setSupplier(ArrayList<Supplier> supplier) { this.supplier = supplier; }
 
-    public void setSupplier(ArrayList<Supplier> supplier) {
-        this.supplier = supplier;
-    }
-
-    public ArrayList<PriceReduction> getPriceReduction() {
-        return priceReduction;
-    }
-
-    public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {
-        this.priceReduction = priceReduction;
-    }
+    public ArrayList<PriceReduction> getPriceReduction() { return priceReduction;}
+    public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {this.priceReduction = priceReduction;}
 }

@@ -1,8 +1,6 @@
-package com.example.shop.shopproject.Service;
+package com.example.shop.shopproject.service;
 
 import com.example.shop.shopproject.exception.ResourceNotFoundException;
-import com.example.shop.shopproject.exception.GlobalExceptionHandler;
-import com.example.shop.shopproject.exception.ErrorDetails;
 import com.example.shop.shopproject.model.User;
 import com.example.shop.shopproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +39,7 @@ public class UserService {
             returnUser.setLastName(user.getLastName());
             returnUser.setRole(user.getRole());
             returnUser.setEmail(user.getEmail());
+            returnUser = userRepository.save(returnUser);
             return returnUser;
         } else{
             user = userRepository.save(user);

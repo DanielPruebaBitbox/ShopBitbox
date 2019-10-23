@@ -2,7 +2,7 @@ package com.example.shop.shopproject.controller;
 
 import java.util.List;
 
-import com.example.shop.shopproject.Service.ProductService;
+import com.example.shop.shopproject.service.ProductService;
 import com.example.shop.shopproject.model.Product;
 import com.example.shop.shopproject.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @RestController
 @RequestMapping("/api/v1")
@@ -39,7 +38,7 @@ public class ProductController {
         return new ResponseEntity<Product>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @PutMapping("/products/{1}")
+    @PutMapping("/products/{id}")
     public ResponseEntity <Product> updateProduct(@RequestBody Product product, @PathVariable(value = "id") Long userId)
                                                   throws ResourceNotFoundException {
         Product updated = productService.createOrUpdateProduct(product, userId);
@@ -50,7 +49,7 @@ public class ProductController {
     public HttpStatus deleteProduct(@PathVariable(value = "id") Long productId)
             throws ResourceNotFoundException {
         productService.deleteProduct(productId);
-        return HttpStatus.FORBIDDEN;
+        return HttpStatus.OK;
     }
 
 
