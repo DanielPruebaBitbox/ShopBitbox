@@ -8,43 +8,43 @@ import java.util.ArrayList;
 @Table(name = "Product")
 public class Product {
 
-    private long id;
-    private long productCode;
+    private Long id;
+    private Long productCode;
     private String name;
     private String description;
-    private boolean active;
-    private LocalDate creationDate;
-    private int price;
-    private long creator;
-
+    private Boolean active;
+    //private LocalDate creationDate;
+    private Integer price;
+    private Long creator;
+/*
     @ManyToOne
     @JoinColumn(name = "supplierId", referencedColumnName = "id")
     private ArrayList<Supplier> supplier = new ArrayList<Supplier>();
-    private ArrayList<PriceReduction> priceReduction = new ArrayList<PriceReduction>();
+    private ArrayList<PriceReduction> priceReduction = new ArrayList<PriceReduction>();*/
 
     public Product() { }
 
-    public Product(String name, String description, int price, int productCode) {
+    public Product(String name, String description, Integer price, Long productCode) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.creationDate = null;
+       // this.creationDate = null;
         //this.active = true;
         this.productCode = productCode;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Column(name = "product_code", nullable = false)
-    public long getProductCode() { return productCode;}
-    public void setProductCode(long productCode) {this.productCode = productCode;
+    public Long getProductCode() { return productCode;}
+    public void setProductCode(Long productCode) {this.productCode = productCode;
     }
 
     @Column(name = "name", nullable = true)
@@ -64,26 +64,26 @@ public class Product {
     }
 
     @Column(name = "price", nullable = true)
-    public int getPrice(){return price;}
-    public void setPrice(int price){this.price = price;}
+    public Integer getPrice(){return price;}
+    public void setPrice(Integer price){this.price = price;}
 
-    @Column(name = "creation_date", nullable = true)
+/*    @Column(name = "creation_date", nullable = true)
     public LocalDate getCreationDate(){return creationDate;}
-    public void setCreationDate(){this.creationDate = LocalDate.now();}
+    public void setCreationDate(){this.creationDate = LocalDate.now();}*/
 
     @Column(name = "product_active", nullable = true)
-    public boolean isActive() {return active;}
-    public void setActive(boolean active) {this.active = active;
+    public Boolean isActive() {return active;}
+    public void setActive(Boolean active) {this.active = active;
     }
 
     @Column(name = "product_creator", nullable = true)
-    public long getCreator() { return creator;    }
-    public void setCreator(long creator) { this.creator = creator; }
+    public Long getCreator() { return creator;    }
+    public void setCreator(Long creator) { this.creator = creator; }
 
-    @Column(name = "creation_date", nullable = true)
-    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate;}
+/*    @Column(name = "creation_date", nullable = true)
+    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate;}*/
 
-    @Column(name="supplier_id", nullable = true)
+/*    @Column(name="supplier_id", nullable = true)
     public ArrayList<Supplier> getSupplier() { return supplier; }
     public void setSupplier(ArrayList<Supplier> supplier) {
         this.supplier = supplier;
@@ -91,5 +91,5 @@ public class Product {
 
     @Column(name="price_reduction_id", nullable = true)
     public ArrayList<PriceReduction> getPriceReduction() { return priceReduction;}
-    public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {this.priceReduction = priceReduction;}
+    public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {this.priceReduction = priceReduction;}*/
 }

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class SupplierService {
     ProductRepository productRepository;
 
-    public void addSupplier(Product product, Supplier supplier) throws ResourceNotFoundException {
+/*    public void addSupplier(Product product, Supplier supplier) throws ResourceNotFoundException {
         Optional<Product> dbProduct = productRepository.findById(product.getId());
         if (dbProduct.isPresent()) {
             ArrayList<Supplier> productSupplier = product.getSupplier();
@@ -24,5 +24,5 @@ public class SupplierService {
             }
             else throw new ResourceNotFoundException("Supplier already in");
         } else throw new ResourceNotFoundException("No product found with given id");
-    }
+    }*/
 }

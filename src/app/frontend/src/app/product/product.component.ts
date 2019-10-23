@@ -12,7 +12,9 @@ export class ProductComponent implements OnInit {
   constructor(private productService : ProductServiceService) { }
 
   ngOnInit() {
+    console.log("al menos estoy aquí");
     this.productService.findAll().subscribe(data =>{
+      console.log("al menos entro");
       this.product = data});
   }
 

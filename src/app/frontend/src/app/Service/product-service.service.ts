@@ -9,11 +9,11 @@ import {Observable} from "rxjs";
 export class ProductServiceService {
   private productUrl: string;
   constructor(private http: HttpClient) {
-    this.productUrl = 'htpp://localhost:8080/api/v1/products'
+    this.productUrl = 'http://localhost:8080/api/v1/products'
   }
 
-  public findAll():Observable<Product[]>{
-    return this.http.get<Product[]>(this.productUrl)
+  public findAll():Observable<any> {
+    return this.http.get('//localhost:8080/api/v1/products');
   }
 
   public save(product : Product) {
