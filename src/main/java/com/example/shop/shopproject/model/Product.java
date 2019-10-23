@@ -17,17 +17,20 @@ public class Product {
     private int price;
     private long creator;
 
+    @ManyToOne
+    @JoinColumn(name = "supplierId", referencedColumnName = "id")
     private ArrayList<Supplier> supplier = new ArrayList<Supplier>();
     private ArrayList<PriceReduction> priceReduction = new ArrayList<PriceReduction>();
 
     public Product() { }
 
-    public Product(String name, String description, int price) {
+    public Product(String name, String description, int price, int productCode) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.creationDate = null;
-        this.active = true;
+        //this.active = true;
+        this.productCode = productCode;
     }
 
     @Id
@@ -80,9 +83,13 @@ public class Product {
     @Column(name = "creation_date", nullable = true)
     public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate;}
 
+    @Column(name="supplier_id", nullable = true)
     public ArrayList<Supplier> getSupplier() { return supplier; }
-    public void setSupplier(ArrayList<Supplier> supplier) { this.supplier = supplier; }
+    public void setSupplier(ArrayList<Supplier> supplier) {
+        this.supplier = supplier;
+    }
 
+    @Column(name="price_reduction_id", nullable = true)
     public ArrayList<PriceReduction> getPriceReduction() { return priceReduction;}
     public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {this.priceReduction = priceReduction;}
 }

@@ -2,6 +2,7 @@ package com.example.shop.shopproject.service;
 
 import com.example.shop.shopproject.exception.ResourceNotFoundException;
 import com.example.shop.shopproject.model.Product;
+import com.example.shop.shopproject.model.Supplier;
 import com.example.shop.shopproject.repository.ProductRepository;
 import com.example.shop.shopproject.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,13 @@ public class ProductService {
         if(newProduct.isPresent()){
             //TODO update fields
             Product returnProduct = newProduct.get();
+            returnProduct.setProductCode(product.getProductCode());
             returnProduct.setDescription(product.getDescription());
-            returnProduct.setPrice(product.getPrice());;
+            //returnProduct.setPrice(product.getPrice());
+            //returnProduct.setActive(product.isActive());
+            //returnProduct.setSupplier(product.getSupplier());
+            //returnProduct.setCreationDate(product.getCreationDate());
+            //returnProduct.setPriceReduction(product.getPriceReduction());
             returnProduct = productRepository.save(returnProduct);
             return returnProduct;
         }
