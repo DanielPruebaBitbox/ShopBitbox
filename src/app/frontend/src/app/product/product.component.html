@@ -9,6 +9,7 @@
       </tr>
       </thead>
       <tbody>
+      <button (click)="productService.findAll()"> </button>
       <tr *ngFor="let prod of product">
         <td>{{ prod.itemCode }}</td>
         <td>{{ prod.description }}</td>
