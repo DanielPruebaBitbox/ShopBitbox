@@ -17,6 +17,6 @@ export class ProductServiceService {
   }
 
   public save(product : Product) {
-    return this.http.post<Product>(this.productUrl, product);
+    return this.http.post<Product>('//localhost:8080/api/v1/products', product);
   }
 }

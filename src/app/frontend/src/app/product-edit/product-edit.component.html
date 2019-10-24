@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Product</h1>
+    <form (ngSubmit)="onSubmit()" #productEdit="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                Product name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="productCode">Code</label>
+            <input type="number" class="form-control" id="productCode" required [(ngModel)]="model.productCode" name="productCode" #name="ngModel">
+            <div [hidden]="productCode.valid || productCode.pristine" class="alert alert-danger">
+                Product code is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" required [(ngModel)]="model.description" name="description" #name="ngModel">
+            <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+                Description is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="checkbox" class="form-control" id="state" [(ngModel)]="model.state" name="state">
+            <span>{{model.state ? "Active" : "Discontinued"}}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <div class="input-icon input-icon-right" id="price">
+                <input type="number" class="form-control" required [(ngModel)]="model.price" name="price" #name="ngModel">
+                <i>€</i>
+            </div>
+            <div [hidden]="price.valid || price.pristine" class="alert alert-danger">
+                Price is required
+            </div>
+        </div>
+
+        <!-- TODO: Creation date should be an automatically generated value in my opinion, you could remove this -->
+        <div class="form-group">
+            <label for="creationDate">Creation date</label>
+            <input type="creationDate" class="form-control" id="creationDate" required [(ngModel)]="model.creationDate" name="creationDate" #name="ngModel">
+            <div [hidden]="creationDate.valid || creationDate.pristine" class="alert alert-danger">
+                Creation date is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="creator">Creator ID</label>
+            <input type="number" class="form-control" id="creator" required [(ngModel)]="model.creator" name="creator" #name="ngModel">
+            <div [hidden]="creator.valid || creator.pristine" class="alert alert-danger">
+                Creator is required
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!productEdit.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="resetProduct(); productEdit.reset()">Reset product</button>
+    </form>
+</div>

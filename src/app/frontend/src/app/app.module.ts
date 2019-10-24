@@ -12,6 +12,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { HttpInterceptorService } from './httpInterceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {ProductComponent} from "./product/product.component";
+import {ProductEditComponent} from "./product-edit/product-edit.component";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {ProductComponent} from "./product/product.component";
     MenuComponent,
     LoginComponent,
     LogoutComponent,
-    ProductComponent
+    ProductComponent,
+    ProductEditComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
