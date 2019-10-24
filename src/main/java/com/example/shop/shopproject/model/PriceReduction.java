@@ -6,11 +6,17 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "price_reduction")
 public class PriceReduction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "reduction_price", nullable = false)
     private int reductionPrice;
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
-
+    @ManyToOne
+    private Product product;
     public PriceReduction() {
     }
 
@@ -20,8 +26,6 @@ public class PriceReduction {
         this.endDate = endDate;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -29,17 +33,16 @@ public class PriceReduction {
         this.id = id;
     }
 
-    @Column(name = "reduction_price", nullable = false)
     public int getReductionPrice() {return reductionPrice; }
     public void setReductionPrice(int reductionPrice) {
         this.reductionPrice = reductionPrice;
     }
 
-    @Column(name = "start_date", nullable = false)
+
     public LocalDate getStartDate() {return startDate; }
     public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
 
-    @Column(name = "end_date", nullable = false)
+
     public LocalDate getEndDate() {return endDate; }
     public void setEndDate(LocalDate endDate) {this.endDate = endDate;}
 }

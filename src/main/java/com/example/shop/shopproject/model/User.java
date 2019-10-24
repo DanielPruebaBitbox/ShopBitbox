@@ -16,13 +16,13 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private String role;
+    private Integer role;
 
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String email, String role) {
+    public User(String firstName, String lastName, String email, Integer role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -62,8 +62,8 @@ public class User {
     }
 
     @Column(name = "user_role", nullable = false)
-    public String getRole() { return role;}
-    public void setRole(String role) {
+    public Integer getRole() { return role;}
+    public void setRole(Integer role) {
         this.role = role;
     }
 

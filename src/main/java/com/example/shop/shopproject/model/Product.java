@@ -1,27 +1,38 @@
 package com.example.shop.shopproject.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "product_code", nullable = false)
     private Long productCode;
+    @Column(name = "name", nullable = true)
     private String name;
+    @Column(name = "description", nullable = false)
     private String description;
+    @Column(name = "product_active", nullable = true)
     private Boolean active;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "creation_date", nullable = true)
     private Date creationDate;
+    @Column(name = "price", nullable = true)
     private Integer price;
+    @Column(name = "product_creator", nullable = true)
     private Long creator;
-/*
+
     @ManyToOne
     @JoinColumn(name = "supplierId", referencedColumnName = "id")
-    private ArrayList<Supplier> supplier = new ArrayList<Supplier>();
-    private ArrayList<PriceReduction> priceReduction = new ArrayList<PriceReduction>();*/
+    private List<Supplier> supplierList;
+    //TODO change ArrayList to List
+    @OneToMany(mappedBy = "product", fetch=FetchType.EAGER)
+    private List<PriceReduction> priceReductionList;
 
     public Product() { }
 
@@ -34,8 +45,6 @@ public class Product {
         this.productCode = productCode;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -43,12 +52,10 @@ public class Product {
         this.id = id;
     }
 
-    @Column(name = "product_code", nullable = false)
     public Long getProductCode() { return productCode;}
-    public void setProductCode(Long productCode) {this.productCode = productCode;
-    }
+    public void setProductCode(Long productCode) {this.productCode = productCode;}
 
-    @Column(name = "name", nullable = true)
+
     public String getName() {
         return name;
     }
@@ -56,7 +63,6 @@ public class Product {
         this.name = name;
     }
 
-    @Column(name = "description", nullable = false)
     public String getDescription() {
         return description;
     }
@@ -64,35 +70,24 @@ public class Product {
         this.description = description;
     }
 
-    @Column(name = "price", nullable = true)
     public Integer getPrice(){return price;}
     public void setPrice(Integer price){this.price = price;}
 
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "creation_date", nullable = true)
     public Date getCreationDate(){return creationDate;}
     public void setCreationDate(Date creationDate){this.creationDate = creationDate;}
 
-    @Column(name = "product_active", nullable = true)
     public Boolean isActive() {return active;}
-    public void setActive(Boolean active) {this.active = active;
-    }
+    public void setActive(Boolean active) {this.active = active;}
 
-    @Column(name = "product_creator", nullable = true)
     public Long getCreator() { return creator;    }
     public void setCreator(Long creator) { this.creator = creator; }
 
-/*    @Column(name = "creation_date", nullable = true)
-    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate;}*/
+    public List<Supplier> getSupplier() {return supplierList;}
+//    public void setSupplier(List<Supplier> supplierList) {this.supplierList = supplierList;}
 
-/*    @Column(name="supplier_id", nullable = true)
-    public ArrayList<Supplier> getSupplier() { return supplier; }
-    public void setSupplier(ArrayList<Supplier> supplier) {
-        this.supplier = supplier;
-    }
+    public List<PriceReduction> getPriceReduction() {return priceReductionList;}
+//    public void setPriceReduction(List<PriceReduction> priceReductionList) {this.priceReductionList = priceReductionList;}
 
-    @Column(name="price_reduction_id", nullable = true)
-    public ArrayList<PriceReduction> getPriceReduction() { return priceReduction;}
-    public void setPriceReduction(ArrayList<PriceReduction> priceReduction) {this.priceReduction = priceReduction;}*/
+
+
 }

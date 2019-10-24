@@ -33,15 +33,14 @@ public class ProductService {
 
         Optional<Product> newProduct = productRepository.findById(productId);
         if(newProduct.isPresent()){
-            //TODO update fields
             Product returnProduct = newProduct.get();
             returnProduct.setProductCode(product.getProductCode());
             returnProduct.setDescription(product.getDescription());
-            //returnProduct.setPrice(product.getPrice());
-            //returnProduct.setActive(product.isActive());
-            //returnProduct.setSupplier(product.getSupplier());
-            //returnProduct.setCreationDate(product.getCreationDate());
-            //returnProduct.setPriceReduction(product.getPriceReduction());
+            returnProduct.setPrice(product.getPrice());
+            returnProduct.setActive(product.isActive());
+//            returnProduct.setSupplier(product.getSupplier());
+            returnProduct.setCreationDate(product.getCreationDate());
+//            returnProduct.setPriceReduction(product.getPriceReduction());
             returnProduct = productRepository.save(returnProduct);
             return returnProduct;
         }

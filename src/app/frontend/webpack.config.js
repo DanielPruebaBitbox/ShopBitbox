@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new webpack.DefinePlugin({
-      // global app config object
+      // global app com.example.shop.shopproject.config object
       config: JSON.stringify({
         apiUrl: 'http://localhost:4000'
       })
