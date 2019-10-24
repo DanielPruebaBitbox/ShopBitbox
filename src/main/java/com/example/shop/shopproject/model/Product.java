@@ -3,6 +3,7 @@ package com.example.shop.shopproject.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 @Table(name = "Product")
@@ -13,7 +14,7 @@ public class Product {
     private String name;
     private String description;
     private Boolean active;
-    //private LocalDate creationDate;
+    private Date creationDate;
     private Integer price;
     private Long creator;
 /*
@@ -28,7 +29,7 @@ public class Product {
         this.name = name;
         this.description = description;
         this.price = price;
-       // this.creationDate = null;
+        this.creationDate = null;
         //this.active = true;
         this.productCode = productCode;
     }
@@ -67,9 +68,11 @@ public class Product {
     public Integer getPrice(){return price;}
     public void setPrice(Integer price){this.price = price;}
 
-/*    @Column(name = "creation_date", nullable = true)
-    public LocalDate getCreationDate(){return creationDate;}
-    public void setCreationDate(){this.creationDate = LocalDate.now();}*/
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "creation_date", nullable = true)
+    public Date getCreationDate(){return creationDate;}
+    public void setCreationDate(Date creationDate){this.creationDate = creationDate;}
 
     @Column(name = "product_active", nullable = true)
     public Boolean isActive() {return active;}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product} from "../model/product";
-import { ProductServiceService} from "../Service/product-service.service";
+import { ProductServiceService} from "../services/product-service.service";
 
 @Component({
   selector: 'app-product',
@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
     console.log("al menos estoy aquí");
     this.productService.findAll().subscribe(data =>{
       console.log("al menos entro");
+      console.log(data);
       this.product = data});
   }
 

@@ -1,24 +1,58 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// import Http module
+
+import { HttpClientModule } from '@angular/common/http'
+
+// import ReactiveFormsModule for reactive form
+import { ReactiveFormsModule } from '@angular/forms';
+
+// import module for Routing.
+import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { ProductServiceService} from "./Service/product-service.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
+import { AdminService } from './services/admin.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    LoginComponent,
+    HomeComponent,
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path : '',
+        component : HomeComponent
+      },
+      {
+        path : 'login',
+        component : LoginComponent
+      },
+      {
+        path : 'signup',
+        component : SignupComponent
+      },
+      {
+        path : 'profile/:adminId',
+        component : ProfileComponent
+      }
+    ])
+
   ],
   providers: [
-    ProductServiceService,
-    HttpClient
+    AdminService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

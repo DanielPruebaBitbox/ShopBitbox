@@ -1,9 +1,10 @@
 export class Product {
-  itemCode: number;
+  productCode: number;
   description : string;
-  state : boolean;
+  active : boolean;
   price : number;
   creationDate : Date;
-  creator : string;
-
+  creator : number;
+  id: number;
+  name : null;
 }
