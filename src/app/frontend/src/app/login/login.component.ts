@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AdminDetail } from '../model/adminDetail';
-import { AdminService } from '../services/admin.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,63 +9,30 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private adminDetail = new AdminDetail();
+  username: string;
+  password : string;
+  errorMessage = 'Invalid Credentials';
+  successMessage: string;
+  invalidLogin = false;
+  loginSuccess = false;
 
-  constructor(private adminService : AdminService, private router : Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService) {   }
 
   ngOnInit() {
-    if((this.adminService.isLoggedIn()) )
-    {
-      this.router.navigate(['/profile' , localStorage.getItem('id')]);
-    }
-    else
-    {
-      this.router.navigate(['/login']);
-    }
   }
 
-  // create the form object.
-  form = new FormGroup({
-    email : new FormControl('' , Validators.required),
-    password : new FormControl('' , Validators.required)
-  });
-
-  Login(LoginInformation)
-  {
-    this.adminDetail.emailId = this.Email.value;
-    this.adminDetail.password = this.Password.value;
-
-    this.adminService.login(this.adminDetail).subscribe(
-      response => {
-        let result =  response.json();
-
-        if(result > 0)
-        {
-          let token = response.headers.get("Authorization");
-
-          localStorage.setItem("token" , token);
-          localStorage.setItem("id" , result);
-
-          this.router.navigate(['/profile', result]);
-        }
-        if(result == -1)
-        {
-          alert("please register before login Or Invalid combination of Email and password");
-        }
-
-      },
-      error => {
-        console.log("Error in authentication");
-      }
-    );
+  handleLogin() {
+    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
+      this.invalidLogin = false;
+      this.loginSuccess = true;
+      this.successMessage = 'Login Successful.';
+      this.router.navigate(['/hello-world']);
+    }, () => {
+      this.invalidLogin = true;
+      this.loginSuccess = false;
+    });
   }
-
-  get Email(){
-    return this.form.get('email');
-  }
-
-  get Password(){
-    return this.form.get('password');
-  }
-
 }

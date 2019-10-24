@@ -27,11 +27,11 @@ public class Product {
     @Column(name = "product_creator", nullable = true)
     private Long creator;
 
-    @ManyToOne
-    @JoinColumn(name = "supplierId", referencedColumnName = "id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Supplier> supplierList;
-    //TODO change ArrayList to List
-    @OneToMany(mappedBy = "product", fetch=FetchType.EAGER)
+
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = false)
     private List<PriceReduction> priceReductionList;
 
     public Product() { }
@@ -83,10 +83,10 @@ public class Product {
     public void setCreator(Long creator) { this.creator = creator; }
 
     public List<Supplier> getSupplier() {return supplierList;}
-//    public void setSupplier(List<Supplier> supplierList) {this.supplierList = supplierList;}
+    public void setSupplier(List<Supplier> supplierList) {this.supplierList = supplierList;}
 
     public List<PriceReduction> getPriceReduction() {return priceReductionList;}
-//    public void setPriceReduction(List<PriceReduction> priceReductionList) {this.priceReductionList = priceReductionList;}
+    public void setPriceReduction(List<PriceReduction> priceReductionList) {this.priceReductionList = priceReductionList;}
 
 
 

@@ -2,6 +2,7 @@ package com.example.shop.shopproject.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "price_reduction")
@@ -11,16 +12,19 @@ public class PriceReduction {
     private long id;
     @Column(name = "reduction_price", nullable = false)
     private int reductionPrice;
+    @Temporal(TemporalType.DATE)
     @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    private Date startDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private Date endDate;
     @ManyToOne
     private Product product;
+
     public PriceReduction() {
     }
 
-    public PriceReduction(int reductionPrice, LocalDate startDate, LocalDate endDate) {
+    public PriceReduction(int reductionPrice, Date startDate, Date endDate) {
         this.reductionPrice = reductionPrice;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -39,10 +43,10 @@ public class PriceReduction {
     }
 
 
-    public LocalDate getStartDate() {return startDate; }
-    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+    public Date getStartDate() {return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
 
 
-    public LocalDate getEndDate() {return endDate; }
-    public void setEndDate(LocalDate endDate) {this.endDate = endDate;}
+    public Date getEndDate() {return endDate; }
+    public void setEndDate(Date endDate) {this.endDate = endDate;}
 }

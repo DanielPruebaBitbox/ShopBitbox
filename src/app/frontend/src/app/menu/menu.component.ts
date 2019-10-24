@@ -1,4 +1,4 @@
-/*import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../login/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -24,4 +24,4 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
   }
 
-}*/
+}

@@ -16,7 +16,7 @@ public class Supplier {
     @Column(name = "country", nullable = false)
     private String country;
 
-    @OneToMany
+    @ManyToMany
     private List<Product> productList;
 
     public Supplier(){

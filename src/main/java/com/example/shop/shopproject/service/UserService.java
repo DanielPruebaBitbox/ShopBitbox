@@ -29,6 +29,7 @@ public class UserService {
 
     }
 
+
     public User createOrUpdateUser(User user, long userId) throws ResourceNotFoundException{
 
         Optional<User> newUser = userRepository.findById(userId);
@@ -55,5 +56,6 @@ public class UserService {
         }
         else throw new ResourceNotFoundException("No user found with given id");
     }
+
 }
 

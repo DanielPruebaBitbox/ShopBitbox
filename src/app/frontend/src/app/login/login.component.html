@@ -1,25 +1,23 @@
-<h2>Login form</h2>
-
-<form [formGroup]="form" #LoginInformation (ngSubmit)="Login(LoginInformation)">
-
-  <div class="row">
-    <div class=" col-md-offset-1 col-md-4">
-      <label for="email"> Email </label>
-      <input formControlName="email" class="form-control" type="text">
+<app-menu></app-menu>
+<div class="container col-lg-6">
+  <h1 class="text-center">Login</h1>
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group">
+        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+        <div class="form-group">
+          <label for="email">User Name :</label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
+                 name="username">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
+                 name="password">
+        </div>
+        <button (click)=handleLogin() class="btn btn-success">Login</button>
+      </form>
     </div>
   </div>
-
-  <div class="row">
-    <div class=" col-md-offset-1 col-md-4">
-      <label for="password"> Password </label>
-      <input formControlName="password" class="form-control" type="password">
-    </div>
-  </div>
-
-  <div class="row" style="margin-top: 40px;">
-    <div class="col-md-offset-1 col-md-4">
-      <button class="btn btn-md btn-primary btn-style"  >Login</button>
-    </div>
-  </div>
-
-</form>
+</div>
