@@ -1,3 +1,4 @@
+/*
 package com.example.shop.shopproject.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -20,3 +21,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 }
 
+*/

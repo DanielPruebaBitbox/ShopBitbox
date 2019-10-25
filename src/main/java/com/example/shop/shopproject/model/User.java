@@ -17,7 +17,7 @@ public class User {
     private String lastName;
     private String email;
     private Integer role;
-
+    private String password;
     public User() {
 
     }
@@ -29,6 +29,10 @@ public class User {
         this.role = role;
     }
 
+    public User(String firstName, String password){
+        this.firstName = firstName;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -53,7 +57,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Column(name = "email_address", nullable = true)
+    @Column(name = "email_address", nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
@@ -61,11 +65,17 @@ public class User {
         this.email = email;
     }
 
-    @Column(name = "user_role", nullable = false)
+    @Column(name = "user_role")
     public Integer getRole() { return role;}
     public void setRole(Integer role) {
         this.role = role;
     }
+    @Column(name= "password", nullable = false)
+    public String getPassword() {
+        return password;
+    }
 
-
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

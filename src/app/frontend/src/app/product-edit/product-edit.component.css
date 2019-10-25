@@ -38,3 +38,5 @@
     padding-right: 25px;
     text-align: right;
 }
+
+[hidden] { display: none !important;}
