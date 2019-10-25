@@ -7,6 +7,7 @@ import com.example.shop.shopproject.repository.ProductRepository;
 import com.example.shop.shopproject.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.Optional;
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
-    private SupplierService supplierService;
+
+
     public List<Product> getAllProducts(){
         List<Product> productList = productRepository.findAll();
         if(productList.size()>0) return productList;
@@ -29,7 +31,7 @@ public class ProductService {
         else throw new ResourceNotFoundException("No product found with given id");
     }
 
-    public Product createOrUpdateProduct(Product product, long productId) throws ResourceNotFoundException{
+    public Product createOrUpdateProduct(@RequestBody Product product, long productId) throws ResourceNotFoundException{
 
         Optional<Product> newProduct = productRepository.findById(productId);
         if(newProduct.isPresent()){
@@ -38,9 +40,9 @@ public class ProductService {
             returnProduct.setDescription(product.getDescription());
             returnProduct.setPrice(product.getPrice());
             returnProduct.setActive(product.isActive());
-//            returnProduct.setSupplier(product.getSupplier());
+            returnProduct.setSupplier(product.getSupplier());
             returnProduct.setCreationDate(product.getCreationDate());
-//            returnProduct.setPriceReduction(product.getPriceReduction());
+            returnProduct.setPriceReduction(product.getPriceReduction());
             returnProduct = productRepository.save(returnProduct);
             return returnProduct;
         }

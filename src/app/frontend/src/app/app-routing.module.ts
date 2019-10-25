@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { LoginComponent } from './login/login.component';
-import {ProductEditComponent} from "./product-edit/product-edit.component";
+import { ProductEditComponent } from "./product-edit/product-edit.component";
+import { ProductComponent } from './product/product.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent},
-  {path: 'hello-world', component: HelloWorldComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'logout', component: LoginComponent},
-  {path: 'newItem', component: ProductEditComponent}
+  {path: 'products', component: ProductComponent},
+  {path: 'products/view/:id', component: ProductViewComponent},
+  {path: 'products/edit/:id', component: ProductEditComponent},
+  {path: 'products/new', component: ProductEditComponent},
+  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

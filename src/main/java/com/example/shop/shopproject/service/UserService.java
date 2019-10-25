@@ -19,7 +19,6 @@ public class UserService {
 
     public List<User> getAllUsers(){
         List<User> userList = userRepository.findAll();
-
         if(userList.size() > 0) return userList;
         else return new ArrayList<User>();
     }

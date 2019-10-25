@@ -2,16 +2,18 @@ package com.example.shop.shopproject.controller;
 
 import com.example.shop.shopproject.model.User;
 import com.example.shop.shopproject.repository.UserRepository;
+import com.example.shop.shopproject.service.AuthUtils;
 import com.example.shop.shopproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -33,39 +35,27 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestBody  User user,  Model model,
-                        HttpServletRequest request) {
-/*        Long id = user.getId();
-        Optional<User> userSearched = userRepository.findById(id);*/
+    public ResponseEntity<String> login(@RequestBody  User user, Model model,
+                                HttpServletRequest request) {
+        String responseString = "{\"response\": \"Invalid username or password\"}";
+
         User emailUser = userRepository.findByEmail(user.getEmail());
-        //userSearched = userRepository.findByUserAndPassword(userSearched.getEmail());
         if (emailUser == null) {
             model.addAttribute("invalidCredentials", true);
             model.addAttribute("messageInvalid", "Usuario o contraseña no válidos");
             model.addAttribute("messageClass", "d-block");
-            return "Este return es de prueba no hemos encontrado nada";
         }
 
         request.getSession().setAttribute("user", emailUser.getFirstName());
-        System.out.println("Shit just got real");
-        System.out.println("user" + emailUser.getEmail());
         String checkPassword = UserService.hashPassword(user.getPassword());
-        if(checkPassword.equals(emailUser.getPassword()) ) return "redirect:/home/" + emailUser.getId();  //DEVOLVER TOKEN COMO SE HACE?
-        return "Usuario o contraseña no válidos";
+        if(checkPassword.equals(emailUser.getPassword()) ) {
+            String authToken = AuthUtils.createJWT(user.getEmail(), "BitBoxTest", "firstLogin",
+                    1000*60*60*24);
+            return new ResponseEntity<String>("{\"response\": \"" + authToken + "\"}",
+                    new HttpHeaders(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<String>(responseString, new HttpHeaders(), HttpStatus.FORBIDDEN);
     }
 
-/*    @RequestMapping(value = "/session", method = RequestMethod.POST)
-    @ResponseBody
-    public String newSession(@RequestBody User user, HttpServletRequest request, HttpServletResponse response){
-        User checkUser = userRepository.findByUserAndPassword(user.getFirstName(), user.getPassword());
-        System.out.println(user.getFirstName());
-        System.out.println(user.getPassword());
-        System.out.println(user.getId());
-        System.out.println(user.getEmail());
-        System.out.println(user.getRole());
-        if(checkUser == null) return "Error";
-        else {
-            return "Todo bien";
-        }
-    }*/
 }

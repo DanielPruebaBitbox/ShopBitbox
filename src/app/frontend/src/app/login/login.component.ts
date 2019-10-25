@@ -8,7 +8,7 @@ import { AuthenticationService } from './auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   email: string;
   password : string;
   id: number;
@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
-      this.router.navigate(['/hello-world']);
-    }, () => {
+      sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, Date.now().toString());
+
+      this.router.navigate(['/home']);
+    }, (error) => {
       this.invalidLogin = true;
       this.loginSuccess = false;
     });

@@ -8,7 +8,7 @@ export class Product {
   public creationDate: Date = new Date();
   public creator: number = 0;
   public name: string = '';
-  private id: number = 0;
+  public id: number = 0;
 
   constructor (
     productCode?: number,
@@ -30,37 +30,53 @@ export class Product {
     this.id = id || this.id;
   }
 
-  setProductCode = (productCode: number): void => {
+ /* setProductCode(productCode: number): void {
     this.productCode = productCode;
   };
-  getProductCode = (): number => (this.productCode);
-  setDescription = (description: string): void => {
+  getProductCode(): number {
+    return this.productCode;
+  };
+  setDescription(description: string): void {
     this.description = description;
   };
-  getDescription = (): string => (this.description);
-  setActive = (active: boolean): void => {
+  getDescription(): string {
+    return this.description;
+  };
+  setActive(active: boolean): void {
     this.active = active;
   };
-  getActive = (): boolean => (this.active);
-  setPrice = (price: number): void => {
+  getActive(): boolean {
+    return this.active;
+  };
+  setPrice(price: number): void {
     this.price = price;
   };
-  getPrice = (): number => (this.price);
+  getPrice(): number {
+    return this.price;
+  };
   // Creation date should be an automatically generated value right?
-  setCreationDate = (creationDate: Date): void => {
+  setCreationDate(creationDate: Date): void {
     this.creationDate = creationDate;
   };
-  getCreationDate = (): Date => (this.creationDate);
-  setCreator = (creatorId: number): void => {
+  getCreationDate(): Date {
+    return this.creationDate;
+  };
+  setCreator(creatorId: number): void {
     this.creator = creatorId;
   };
-  getCreator = (): number => (this.creator);
-  setName = (name: string): void => {
+  getCreator(): number {
+    return this.creator;
+  };
+  setName(name: string): void {
     this.name = name;
   };
-  getName = (): string => (this.name);
-  setId = (id: number): void => {
+  getName(): string {
+    return this.name;
+  };
+  setId(id: number): void {
     this.id = id;
   };
-  getId = (): number => (this.id);
+  getId() : number {
+    return this.id;
+  };*/
 };
