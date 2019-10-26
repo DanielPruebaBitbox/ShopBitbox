@@ -35,4 +35,8 @@ export class ProductComponent implements OnInit {
     this.router.navigate(['/products/price/', product.id, { "edit":true}]);
   }
 
+  supplierWindow(product: Product){
+    this.productService.setCurrentProduct(product);
+    this.router.navigate(['/products/supplier/', product.id, { "edit":true}]);
+  }
 }

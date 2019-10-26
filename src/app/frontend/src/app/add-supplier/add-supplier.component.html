@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>{{"Add supplier to product"}}</h1>
+  <form (ngSubmit)="addSupplier($event)" #productEdit="ngForm">
+
+    <div class="form-group">
+      <label for="productName">Name</label>
+      <input type="text" class="form-control" id="productName" required [(ngModel)]="supplierModel.name" name="productName" #productName="ngModel">
+      <div [hidden]="productName.valid || productName.pristine" class="alert alert-danger">
+        Product name is required
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" required [(ngModel)]="supplierModel.country" name="country" #country="ngModel">
+      <div [hidden]="country.valid || country.pristine" class="alert alert-danger">
+        Country is required
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success" [disabled]="!productEdit.form.valid">Submit</button>
+  </form>
+</div>

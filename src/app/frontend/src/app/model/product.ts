@@ -1,4 +1,5 @@
 import {PriceReduction} from "./priceReduction";
+import {Suppliers} from "./suppliers";
 
 export class Product {
   // TODO: Add suppliers and discounts
@@ -12,6 +13,7 @@ export class Product {
   public name: string = '';
   public id: number = 0;
   public priceReduction: PriceReduction[] = [];
+  public suppliers : Suppliers[] = [];
 
   constructor (
     productCode?: number,
@@ -22,7 +24,8 @@ export class Product {
     creator?: number,
     name?: string,
     id?: number,
-    priceReduction?: PriceReduction
+    priceReduction?: PriceReduction,
+    suppliers?: Suppliers
   ) {
     this.productCode = productCode || this.productCode;
     this.description = description || this.description;
@@ -33,6 +36,7 @@ export class Product {
     this.name = name || this.name;
     this.id = id || this.id;
     if(priceReduction) this.priceReduction.push(priceReduction);
+    if(suppliers) this.suppliers.push(suppliers)
   }
 
 }

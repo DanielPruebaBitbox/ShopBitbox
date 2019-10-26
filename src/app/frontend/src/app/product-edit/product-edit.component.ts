@@ -18,8 +18,8 @@ export class ProductEditComponent {
   // Product object to edit, empty Product by default
   @Input()
   model?: Product = new Product();
-
   emptyProduct = new Product()
+
   constructor(
     private productService : ProductServiceService
   ) {this.model = productService.getCurrentProduct();
@@ -30,16 +30,13 @@ export class ProductEditComponent {
   // <app-product-edit [edit]="true" [model]="myProduct"></app-product-edit>
 
   onSubmit() {
-    console.log(this.model);
     this.productService.setCurrentProduct(this.emptyProduct);
-    console.log(this.productService.getCurrentProduct())
-    console.log("edit + "+   this.edit);
+
     if (this.edit) {
       this.productService.edit(this.model);
     } else {
       this.productService.save(this.model);
     }
-
   };
 
   newProduct() {

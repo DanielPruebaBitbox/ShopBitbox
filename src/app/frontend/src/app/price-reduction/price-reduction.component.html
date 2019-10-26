@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>{{"Product editor"}}</h1>
-  <form (ngSubmit)="onSubmit()" #productEdit="ngForm">
+  <h1>{{"Add discount"}}</h1>
+  <form (ngSubmit)="addPriceReduction($event)" #productEdit="ngForm">
 
 
     <div class="form-group">
-      <label for="price">Price</label>
-      <div class="input-icon input-icon-right" id="price">
-        <input type="number" class="form-control" required [(ngModel)]="model.reductionPrice" name="reductionPrice" #reductionPrice="ngModel">
+      <label for="reductionPrice">Price</label>
+      <div class="input-icon input-icon-right" id="reductionPrice">
+        <input type="number" class="form-control" required [(ngModel)]="priceReduction.reductionPrice" name="reductionPrice" #reductionPrice="ngModel">
         <i>€</i>
       </div>
       <div [hidden]="reductionPrice.valid || reductionPrice.pristine" class="alert alert-danger">
@@ -17,7 +17,7 @@
     <!-- TODO: Creation date should be an automatically generated value in my opinion, you could remove this -->
     <div class="form-group">
       <label for="startDate">Start date</label>
-      <input type="startDate" class="form-control" id="startDate" required [(ngModel)]="model.startDate" name="startDate" #startDate="ngModel">
+      <input type="startDate" class="form-control" id="startDate" required [(ngModel)]="priceReduction.startDate" name="startDate" #startDate="ngModel">
       <div [hidden]="startDate.valid || startDate.pristine" class="alert alert-danger">
         Start date is required
       </div>
@@ -25,7 +25,7 @@
 
     <div class="form-group">
       <label for="EndDate">End date</label>
-      <input type="EndDate" class="form-control" id="EndDate" required [(ngModel)]="model.EndDate" name="EndDate" #EndDate="ngModel">
+      <input type="EndDate" class="form-control" id="EndDate" required [(ngModel)]="priceReduction.endDate" name="EndDate" #EndDate="ngModel">
       <div [hidden]="EndDate.valid || EndDate.pristine" class="alert alert-danger">
         End date is required
       </div>

@@ -26,12 +26,11 @@ export class PriceReductionComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  addPriceReduction($event){
+    $event.preventDefault();
     this.productService.setCurrentProduct(this.emptyProduct);
     this.model.priceReduction.push(this.priceReduction);
     this.productService.edit(this.model);
-
-
   }
 
 }
