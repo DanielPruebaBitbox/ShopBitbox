@@ -1,5 +1,12 @@
 <div class="card my-5">
   <div class="card-body">
+
+    <th><div class="btn-group mr-2" role="group" aria-label="First group">
+      <div>
+        <input type="button" class="btn btn-secondary" value="New Item" (click)="createProduct(prod)"/></div>
+      </div>
+    </th>
+    <th> <input #onlyActive type="checkbox" name="onlyActive" (change)="products = products"> Show only active </th>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
@@ -7,10 +14,10 @@
         <th scope="col">Description</th>
         <th scope="col">Item Code</th>
         <th scope="col">Creator</th>
-        <th scope="col">Is Active?</th>
+        <th scope="col">Is Active? </th>
         <th scope="col">Price</th>
         <th scope="col">Actions</th>
-        <th> <input #onlyActive type="checkbox" name="onlyActive" (change)="products = products"> Show only active </th>
+
       </tr>
       </thead>
       <tbody>
@@ -23,11 +30,23 @@
           <td>{{prod.active ? "Active" : "Discontinued"}}</td>
           <td>{{prod.price | currency:'EUR':true}}</td>
           <td>
-            <input type="button" value="View" (click)="onDetailsView(prod)"/>
-            <input type="button" value="Edit" (click)="onEditView(prod)"/>
-            <input type="button" value="Suppliers" (click)="supplierWindow(prod)"/>
-            <input type="button" value="Discounts" (click)="addPriceReduction(prod)"/>
-            <input type="button" value="Deactivate" (click)="deactivateItem(prod)"/>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div><input type="button" class="btn btn-secondary" value="View" (click)="onDetailsView(prod)" /></div>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div><input type="button" class="btn btn-secondary" value="Edit" (click)="onEditView(prod)" [disabled]="!prod.active"/></div>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div><input type="button" class="btn btn-secondary" value="Suppliers" (click)="supplierWindow(prod)" [disabled]="!prod.active"/></div>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div><input type="button" class="btn btn-secondary" value="Discounts" (click)="addPriceReduction(prod)" [disabled]="!prod.active"/></div>
+              </div>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div><input type="button" class="btn btn-secondary" value="Deactivate" (click)="deactivateItem(prod)" [disabled]="!prod.active"/></div>
+              </div>
+            </div>
           </td>
         </tr>
       </ng-container>

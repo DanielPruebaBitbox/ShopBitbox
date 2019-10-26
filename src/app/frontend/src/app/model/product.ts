@@ -11,7 +11,7 @@ export class Product {
   public price: number = 0;
   public creationDate: Date = new Date();
   public creator: number = 0;
-  public name: string = '';
+  public deactivateReason: string = '';
   public id: number = 0;
   public priceReduction: PriceReduction[] = [];
   public supplier : Supplier[] = [];
@@ -23,7 +23,7 @@ export class Product {
     price?: number,
     creationDate?: Date,
     creator?: number,
-    name?: string,
+    deactivateReason?: string,
     id?: number,
     priceReduction?: PriceReduction,
     supplier?: Supplier
@@ -34,7 +34,7 @@ export class Product {
     this.price = price || this.price;
     this.creationDate = creationDate || this.creationDate;
     this.creator = creator || this.creator;
-    this.name = name || this.name;
+    this.deactivateReason = deactivateReason || this.deactivateReason;
     this.id = id || this.id;
     if(priceReduction) this.priceReduction.push(priceReduction);
     if(supplier) this.supplier.push(supplier);

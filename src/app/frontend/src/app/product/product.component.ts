@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProductComponent implements OnInit {
   @Input()
   products : Product[] = [];
+  emptyProduct = new Product();
   constructor(
     private router: Router,
     private productService : ProductServiceService
@@ -45,5 +46,11 @@ export class ProductComponent implements OnInit {
     this.productService.setCurrentProduct(product);
     this.router.navigate(['/products/deactivate/', product.id, { "edit":true}]);
   }
+
+  createProduct(product: Product){
+    this.productService.setCurrentProduct(this.emptyProduct);
+    this.router.navigate(['/products/new']);
+  }
+
 
 }

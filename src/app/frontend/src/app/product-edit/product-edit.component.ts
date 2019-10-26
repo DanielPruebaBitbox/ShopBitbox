@@ -33,7 +33,6 @@ export class ProductEditComponent {
     this.productService.setCurrentProduct(this.emptyProduct);
 
     if (this.edit) {
-      console.log(this.model);
       this.productService.edit(this.model);
       this.router.navigate(['/home']);
     } else {

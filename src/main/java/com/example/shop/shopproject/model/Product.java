@@ -14,7 +14,7 @@ public class Product {
 
     private Long productCode;
 
-    private String name;
+    private String deactivateReason;
 
     private String description;
     private Boolean active;
@@ -30,10 +30,10 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<PriceReduction> priceReductionList;
 
-    public Product(Long productCode, String name, String description, Boolean active, Date creationDate, Integer price,
+    public Product(Long productCode, String deactivateReason, String description, Boolean active, Date creationDate, Integer price,
                    Long creator, List<Supplier> supplierList, List<PriceReduction> priceReductionList) {
         this.productCode = productCode;
-        this.name = name;
+        this.deactivateReason = deactivateReason;
         this.description = description;
         this.active = active;
         this.creationDate = creationDate;
@@ -47,8 +47,8 @@ public class Product {
 
 
 
-    public Product(String name, String description, Integer price, Long productCode) {
-        this.name = name;
+    public Product(String deactivateReason, String description, Integer price, Long productCode) {
+        this.deactivateReason = deactivateReason;
         this.description = description;
         this.price = price;
         this.creationDate = null;
@@ -71,12 +71,12 @@ public class Product {
     public Long getProductCode() { return productCode;}
     public void setProductCode(Long productCode) {this.productCode = productCode;}
 
-    @Column(name = "name", nullable = true)
-    public String getName() {
-        return name;
+    @Column(name = "deactivateReason", nullable = true)
+    public String getDeactivateReason() {
+        return deactivateReason;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setDeactivateReason(String deactivateReason) {
+        this.deactivateReason = deactivateReason;
     }
     @Column(name = "description", nullable = false)
     public String getDescription() {
@@ -85,16 +85,20 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Column(name = "price", nullable = true)
     public Integer getPrice(){return price;}
     public void setPrice(Integer price){this.price = price;}
+
     @Temporal(TemporalType.DATE)
     @Column(name = "creation_date", nullable = true)
     public Date getCreationDate(){return creationDate;}
     public void setCreationDate(Date creationDate){this.creationDate = creationDate;}
     @Column(name = "product_active", nullable = true)
+
     public Boolean isActive() {return active;}
     public void setActive(Boolean active) {this.active = active;}
+
     @Column(name = "product_creator", nullable = true)
     public Long getCreator() { return creator;    }
     public void setCreator(Long creator) { this.creator = creator; }

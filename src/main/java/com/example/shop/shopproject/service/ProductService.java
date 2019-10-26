@@ -38,7 +38,7 @@ public class ProductService {
         Optional<Product> newProduct = productRepository.findById(productId);
         if(newProduct.isPresent()){
             Product returnProduct = newProduct.get();
-            returnProduct.setName(product.getName());
+            returnProduct.setDeactivateReason(product.getDeactivateReason());
             returnProduct.setCreator(product.getCreator());
             returnProduct.setProductCode(product.getProductCode());
             returnProduct.setDescription(product.getDescription());

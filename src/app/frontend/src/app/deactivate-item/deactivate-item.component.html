@@ -1,23 +1,23 @@
-<div container>
-  <h1>{{"Deactivate Item"}}</h1>
-  <form (ngSubmit)="onSubmitDeactivate($event)" #productEdit="ngForm">
-    <div class="alert alert-danger" role="alert">
-      Be careful, once you deactivate an item it can't be reactivated
-    </div>
-
-
-    <form>
-      <div class="form-group">
-        <label for="productName">Why do you want to deactivate it?</label>
-        <input type="text" class="form-control" id="productName" required [(ngModel)]="model.name" #productName="ngModel">
-        <div [hidden]="productName.valid || productName.pristine" class="alert alert-danger">
-          A reason is required
-        </div>
+<div class="container">
+  <table class="table table-hover">
+      <div container>
+        <h1>{{"Deactivate Item"}}</h1>
+        <form (ngSubmit)="onSubmitDeactivate($event)" #productEdit="ngForm">
+          <div class="alert alert-danger" role="alert">
+            Be careful, once you deactivate an item it can't be reactivated
+          </div>
+          <form>
+            <div class="form-group">
+              <label for="deactivateReason">Why do you want to deactivate it?</label>
+              <input type="text" class="form-control" id="deactivateReason">
+              <div [hidden]="" class="alert alert-danger">
+                A reason is required
+              </div>
+            </div>
+          </form>
+          <button type="submit" class="btn btn-success" [disabled]="!productEdit.form.valid">Submit</button>
+        </form>
       </div>
-    </form>
-    <button type="submit" class="btn btn-success" [disabled]="!productEdit.form.valid">Submit</button>
-  </form>
-
-
+  </table>
 </div>
 

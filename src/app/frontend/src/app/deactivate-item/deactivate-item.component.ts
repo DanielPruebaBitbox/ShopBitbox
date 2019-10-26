@@ -25,7 +25,7 @@ export class DeactivateItemComponent implements OnInit {
 
   onSubmitDeactivate($event){
     $event.preventDefault();
-
+    this.model.active = false;
     this.productService.edit(this.model);
     this.router.navigate(['/home']);
   }
