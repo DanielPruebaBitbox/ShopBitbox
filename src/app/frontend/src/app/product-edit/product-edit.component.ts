@@ -19,9 +19,11 @@ export class ProductEditComponent {
   @Input()
   model?: Product = new Product();
 
+  emptyProduct = new Product()
   constructor(
     private productService : ProductServiceService
-  ) {if(this.edit)this.model = productService.getCurrentProduct();
+  ) {this.model = productService.getCurrentProduct();
+    if(this.model.id) this.edit = true;
     console.log(this.model)
   }
   // Component called like
@@ -29,6 +31,9 @@ export class ProductEditComponent {
 
   onSubmit() {
     console.log(this.model);
+    this.productService.setCurrentProduct(this.emptyProduct);
+    console.log(this.productService.getCurrentProduct())
+    console.log("edit + "+   this.edit);
     if (this.edit) {
       this.productService.edit(this.model);
     } else {

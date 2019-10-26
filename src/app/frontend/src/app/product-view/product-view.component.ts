@@ -18,8 +18,8 @@ export class ProductViewComponent {
         private productService : ProductServiceService
     ) {
         this.model = productService.getCurrentProduct();
+
     }
 
-    // Component called like
-    // <app-product-view [model]="myProduct"></app-product-view>
+
 }

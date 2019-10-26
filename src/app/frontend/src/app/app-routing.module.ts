@@ -5,6 +5,7 @@ import { ProductEditComponent } from "./product-edit/product-edit.component";
 import { ProductComponent } from './product/product.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import {HomeComponent} from "./home/home.component";
+import {PriceReductionComponent} from "./price-reduction/price-reduction.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'products/view/:id', component: ProductViewComponent},
   {path: 'products/edit/:id', component: ProductEditComponent},
   {path: 'products/new', component: ProductEditComponent},
+  {path: 'products/price/:id', component: PriceReductionComponent},
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '/login'}
 ];

@@ -46,7 +46,6 @@ public class UserService {
             returnUser = userRepository.save(returnUser);
             return returnUser;
         } else{
-            System.out.println("crear");
             user.setPassword(hashPassword(user.getPassword()));
             user = userRepository.save(user);
             return user;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../model/product';
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +24,20 @@ export class ProductServiceService {
     return this.http.get(this.productUrl);
   }
 
-  public save(product : Product): Observable<any> {
-    console.log("trato de crearlo");
-    return this.http.post<Product>(this.productUrl, product);
+  public save(product : Product) {
+    console.log("new product");
+    return this.http.post('//localhost:8080/api/v1/products', product).subscribe(request => {
+      if(request) console.log(request);
+      else console.log(request);
+    });
   }
 
-  public edit(product : Product): Observable<any> {
-    return this.http.put<Product>(this.productUrl + product.id, product);
+  public edit(product : Product) {
+    console.log("edit product");
+    return this.http.put<Product>('//localhost:8080/api/v1/products/'+ product.id, product).subscribe(request => {
+      if(request) console.log(request);
+      else console.log(request);
+    });
   }
 
 }

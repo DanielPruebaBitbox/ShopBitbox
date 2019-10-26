@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity <Product> createProduct(Product product) throws ResourceNotFoundException {
+    public ResponseEntity <Product> createProduct(@RequestBody Product product) throws ResourceNotFoundException {
         Product updated = productService.createOrUpdateProduct(product, 0);
         return new ResponseEntity<Product>(updated, new HttpHeaders(), HttpStatus.OK);
     }

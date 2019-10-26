@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { registerLocaleData } from '@angular/common';
 import { ProductViewComponent } from './product-view/product-view.component';
 import {HomeComponent} from "./home/home.component";
+import { PriceReductionComponent } from './price-reduction/price-reduction.component';
 
 registerLocaleData(localeEs);
 @NgModule({
@@ -29,7 +30,8 @@ registerLocaleData(localeEs);
     ProductComponent,
     ProductViewComponent,
     ProductEditComponent,
-    NavbarComponent
+    NavbarComponent,
+    PriceReductionComponent
   ],
   imports: [
     BrowserModule,

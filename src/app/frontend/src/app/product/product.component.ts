@@ -28,7 +28,11 @@ export class ProductComponent implements OnInit {
 
   onEditView(product: Product) {
     this.productService.setCurrentProduct(product);
-    this.router.navigate(['/products/edit/', product.id]);
+    this.router.navigate(['/products/edit/', product.id, { "edit":true}]);
+  }
+  addPriceReduction(product: Product){
+    this.productService.setCurrentProduct(product);
+    this.router.navigate(['/products/price/', product.id, { "edit":true}]);
   }
 
 }

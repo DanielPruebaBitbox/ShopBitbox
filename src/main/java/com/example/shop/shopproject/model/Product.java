@@ -1,7 +1,5 @@
 package com.example.shop.shopproject.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -61,7 +59,7 @@ public class Product {
     public String getName() {
         return name;
     }
-    public void setName(String firstName) {
+    public void setName(String name) {
         this.name = name;
     }
     @Column(name = "description", nullable = false)

@@ -2,9 +2,7 @@ package com.example.shop.shopproject.service;
 
 import com.example.shop.shopproject.exception.ResourceNotFoundException;
 import com.example.shop.shopproject.model.Product;
-import com.example.shop.shopproject.model.Supplier;
 import com.example.shop.shopproject.repository.ProductRepository;
-import com.example.shop.shopproject.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +14,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
 
 
     public List<Product> getAllProducts(){
@@ -36,6 +34,7 @@ public class ProductService {
         Optional<Product> newProduct = productRepository.findById(productId);
         if(newProduct.isPresent()){
             Product returnProduct = newProduct.get();
+            returnProduct.setName(product.getName());
             returnProduct.setProductCode(product.getProductCode());
             returnProduct.setDescription(product.getDescription());
             returnProduct.setPrice(product.getPrice());
