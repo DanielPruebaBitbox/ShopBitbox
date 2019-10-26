@@ -40,3 +40,8 @@
 }
 
 [hidden] { display: none !important;}
+
+
+table table {
+  width: 99%;
+}

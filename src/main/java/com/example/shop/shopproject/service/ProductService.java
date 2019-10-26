@@ -39,12 +39,12 @@ public class ProductService {
         if(newProduct.isPresent()){
             Product returnProduct = newProduct.get();
             returnProduct.setName(product.getName());
+            returnProduct.setCreator(product.getCreator());
             returnProduct.setProductCode(product.getProductCode());
             returnProduct.setDescription(product.getDescription());
             returnProduct.setPrice(product.getPrice());
             returnProduct.setActive(product.isActive());
             returnProduct.setSupplier(supplierService.addSupplier(returnProduct, product.getSupplier()));
-            returnProduct.setSupplier(product.getSupplier());
             returnProduct.setCreationDate(product.getCreationDate());
             returnProduct.setPriceReduction(product.getPriceReduction());
             returnProduct = productRepository.save(returnProduct);

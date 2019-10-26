@@ -27,9 +27,25 @@ public class Product {
     private List<Supplier> supplierList;
 
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = false)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<PriceReduction> priceReductionList;
+
+    public Product(Long productCode, String name, String description, Boolean active, Date creationDate, Integer price,
+                   Long creator, List<Supplier> supplierList, List<PriceReduction> priceReductionList) {
+        this.productCode = productCode;
+        this.name = name;
+        this.description = description;
+        this.active = active;
+        this.creationDate = creationDate;
+        this.price = price;
+        this.creator = creator;
+        this.supplierList = supplierList;
+        this.priceReductionList = priceReductionList;
+    }
+
     public Product() { }
+
+
 
     public Product(String name, String description, Integer price, Long productCode) {
         this.name = name;

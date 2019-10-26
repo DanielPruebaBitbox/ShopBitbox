@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private productService : ProductServiceService
   ){ };
+
   ngOnInit() {
      this.productService.findAll().subscribe(data => {
        this.products = data;
@@ -39,4 +40,10 @@ export class ProductComponent implements OnInit {
     this.productService.setCurrentProduct(product);
     this.router.navigate(['/products/supplier/', product.id, { "edit":true}]);
   }
+
+  deactivateItem(product: Product){
+    this.productService.setCurrentProduct(product);
+    this.router.navigate(['/products/deactivate/', product.id, { "edit":true}]);
+  }
+
 }

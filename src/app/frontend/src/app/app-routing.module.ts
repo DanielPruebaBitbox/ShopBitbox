@@ -7,6 +7,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import {HomeComponent} from "./home/home.component";
 import {PriceReductionComponent} from "./price-reduction/price-reduction.component";
 import {AddSupplierComponent} from "./add-supplier/add-supplier.component";
+import {DeactivateItemComponent} from "./deactivate-item/deactivate-item.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'products/new', component: ProductEditComponent},
   {path: 'products/price/:id', component: PriceReductionComponent},
   {path: 'products/supplier/:id', component: AddSupplierComponent},
+  {path: 'products/deactivate/:id', component: DeactivateItemComponent},
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', redirectTo: '/login'}
 ];

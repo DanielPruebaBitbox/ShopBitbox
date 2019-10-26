@@ -1,4 +1,4 @@
-export class Suppliers {
+export class Supplier {
   public country : string = "";
   public name : string = "";
   public id: number = 0;

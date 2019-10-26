@@ -10,23 +10,27 @@
         <th scope="col">Is Active?</th>
         <th scope="col">Price</th>
         <th scope="col">Actions</th>
+        <th> <input #onlyActive type="checkbox" name="onlyActive" (change)="products = products"> Show only active </th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let prod of products">
-        <td>{{prod.id}}</td>
-        <td>{{prod.description}}</td>
-        <td>{{prod.productCode}}</td>
-        <td>{{prod.creator}}</td>
-        <td>{{prod.active ? "Active" : "Discontinued"}}</td>
-        <td>{{prod.price | currency:'EUR':true}}</td>
-        <td>
-          <input type="button" value="View" (click)="onDetailsView(prod)"/>
-          <input type="button" value="Edit" (click)="onEditView(prod)"/>
-          <input type="button" value="Suppliers" (clic)="supplierWindow(prod)"/>
-          <input type="button" value="Discounts" (click)="addPriceReduction(prod)"/>
-        </td>
-      </tr>
+      <ng-container *ngFor="let prod of products">
+        <tr *ngIf="!onlyActive.checked || prod.active">
+          <td>{{prod.id}}</td>
+          <td>{{prod.description}}</td>
+          <td>{{prod.productCode}}</td>
+          <td>{{prod.creator}}</td>
+          <td>{{prod.active ? "Active" : "Discontinued"}}</td>
+          <td>{{prod.price | currency:'EUR':true}}</td>
+          <td>
+            <input type="button" value="View" (click)="onDetailsView(prod)"/>
+            <input type="button" value="Edit" (click)="onEditView(prod)"/>
+            <input type="button" value="Suppliers" (click)="supplierWindow(prod)"/>
+            <input type="button" value="Discounts" (click)="addPriceReduction(prod)"/>
+            <input type="button" value="Deactivate" (click)="deactivateItem(prod)"/>
+          </td>
+        </tr>
+      </ng-container>
       </tbody>
     </table>
   </div>

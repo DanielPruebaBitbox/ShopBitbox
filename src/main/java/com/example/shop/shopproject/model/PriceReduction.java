@@ -3,6 +3,7 @@ package com.example.shop.shopproject.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "price_reduction")
@@ -10,16 +11,16 @@ public class PriceReduction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "reduction_price", nullable = false)
+    @Column(name = "reduction_price")
     private int reductionPrice;
     @Temporal(TemporalType.DATE)
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "start_date")
     private Date startDate;
     @Temporal(TemporalType.DATE)
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private Date endDate;
-    @ManyToOne
-    private Product product;
+/*    @OneToOne
+    private List<Product> productList;*/
 
     public PriceReduction() {
     }
@@ -49,4 +50,7 @@ public class PriceReduction {
 
     public Date getEndDate() {return endDate; }
     public void setEndDate(Date endDate) {this.endDate = endDate;}
+
+
+
 }

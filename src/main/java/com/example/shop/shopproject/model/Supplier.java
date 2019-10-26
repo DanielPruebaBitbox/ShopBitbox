@@ -11,9 +11,9 @@ public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column(name = "country", nullable = false)
+    @Column(name = "country")
     private String country;
 
     @ManyToMany

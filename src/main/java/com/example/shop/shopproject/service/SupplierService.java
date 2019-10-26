@@ -21,13 +21,22 @@ public class SupplierService {
 
     public  List<Supplier> addSupplier(Product product, List<Supplier> supplierList) throws ResourceNotFoundException {
         List<Supplier> productSupplierList = product.getSupplier();
-        for(Supplier supplier : supplierList) {
-            if (!productSupplierList.contains(supplier)) {
-                productSupplierList.add(supplier);
-/*                product.setSupplier(productSupplierList);
-                productRepository.save(product);*/
+        boolean equals = false;
+        ArrayList<Supplier> supplierToAdd = new ArrayList<Supplier>();
+        for (Supplier supplier : supplierList) {
+            for (Supplier originalSupplier : productSupplierList) {
+                equals = false;
+                if (supplier.getName().equals(originalSupplier.getName()) &&
+                        supplier.getCountry().equals(originalSupplier.getCountry())) {
+                    equals = true;
+                    break;
+                }
             }
+            if (!equals) supplierToAdd.add(supplier);
+
         }
+        for(Supplier supplier: supplierToAdd) product.getSupplier().add(supplier);
+
         return product.getSupplier();
     }
 

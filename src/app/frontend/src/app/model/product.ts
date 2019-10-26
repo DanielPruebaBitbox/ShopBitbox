@@ -1,8 +1,9 @@
 import {PriceReduction} from "./priceReduction";
-import {Suppliers} from "./suppliers";
+import {Supplier} from "./supplier";
+import {setUpLocationSync} from "@angular/router/upgrade";
 
 export class Product {
-  // TODO: Add suppliers and discounts
+  // TODO: Add supplier and discounts
   // You could generate IDs here or give "good" initial values for a newly created product
   public productCode: number = 0;
   public description: string = '';
@@ -13,7 +14,7 @@ export class Product {
   public name: string = '';
   public id: number = 0;
   public priceReduction: PriceReduction[] = [];
-  public suppliers : Suppliers[] = [];
+  public supplier : Supplier[] = [];
 
   constructor (
     productCode?: number,
@@ -25,7 +26,7 @@ export class Product {
     name?: string,
     id?: number,
     priceReduction?: PriceReduction,
-    suppliers?: Suppliers
+    supplier?: Supplier
   ) {
     this.productCode = productCode || this.productCode;
     this.description = description || this.description;
@@ -36,7 +37,7 @@ export class Product {
     this.name = name || this.name;
     this.id = id || this.id;
     if(priceReduction) this.priceReduction.push(priceReduction);
-    if(suppliers) this.suppliers.push(suppliers)
+    if(supplier) this.supplier.push(supplier);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Product } from '../model/product';
 import { ProductServiceService } from '../services/product.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-edit',
@@ -18,28 +19,27 @@ export class ProductEditComponent {
   // Product object to edit, empty Product by default
   @Input()
   model?: Product = new Product();
-  emptyProduct = new Product()
+  emptyProduct = new Product();
 
   constructor(
-    private productService : ProductServiceService
-  ) {this.model = productService.getCurrentProduct();
-    if(this.model.id) this.edit = true;
-    console.log(this.model)
+    private productService : ProductServiceService, private router: Router
+  ) {
+    this.model = productService.getCurrentProduct();
+    if(this.model) this.edit = true;
   }
-  // Component called like
-  // <app-product-edit [edit]="true" [model]="myProduct"></app-product-edit>
+
 
   onSubmit() {
     this.productService.setCurrentProduct(this.emptyProduct);
 
     if (this.edit) {
+      console.log(this.model);
       this.productService.edit(this.model);
+      this.router.navigate(['/home']);
     } else {
       this.productService.save(this.model);
+      this.router.navigate(['/home']);
     }
   };
 
-  newProduct() {
-    this.model = new Product();
-  };
 }

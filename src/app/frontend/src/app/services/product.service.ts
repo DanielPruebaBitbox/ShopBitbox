@@ -25,15 +25,13 @@ export class ProductServiceService {
   }
 
   public save(product : Product) {
-    console.log("new product");
+
     return this.http.post('//localhost:8080/api/v1/products', product).subscribe(request => {
     });
   }
 
   public edit(product : Product) {
-    console.log("edit product");
     return this.http.put<Product>('//localhost:8080/api/v1/products/'+ product.id, product).subscribe(request => {
-      if(request) console.log(request);
     });
   }
 
